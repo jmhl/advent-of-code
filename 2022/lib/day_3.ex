@@ -15,34 +15,30 @@ defmodule AdventOfCode2022.Day3 do
     if Enum.member?(@alphabet, letter), do: alphabet_idx + 1, else: alphabet_idx + 1 + 26
   end
 
+  def get_list_intersection(l1, l2) do
+    MapSet.intersection(MapSet.new(l1), MapSet.new(l2)) |> MapSet.to_list
+  end
+
   def part1 do
-    get_repeated_character = fn [compartment1, compartment2] ->
-      set1 = MapSet.new(compartment1)
-      set2 = MapSet.new(compartment2)
-
-      MapSet.intersection(set1, set2) |> MapSet.to_list |> List.first
-    end
-
     split_in_two = fn str ->
       String.split(str, "", trim: true)
       |> Enum.split(round(String.length(str) / 2))
       |> Tuple.to_list
     end
 
+    get_repeated_character = fn [compartment1, compartment2] -> get_list_intersection(compartment1, compartment2) end
+
     get_rucksacks()
     |> Enum.map(split_in_two)
     |> Enum.map(get_repeated_character)
+    |> Enum.map(&List.first(&1))
     |> Enum.map(&get_priority_score(&1))
     |> Enum.sum
   end
 
   def part2 do
     get_repeated_character = fn [compartment1, compartment2, compartment3] ->
-      set1 = MapSet.new(compartment1)
-      set2 = MapSet.new(compartment2)
-      set3 = MapSet.new(compartment3)
-
-      MapSet.intersection(set1, set2) |> MapSet.intersection(set3) |> MapSet.to_list |> List.first
+      get_list_intersection(compartment1, compartment2) |> get_list_intersection(compartment3) |> List.first
     end
 
     convert_to_lists = fn list_of_strs ->
