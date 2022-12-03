@@ -1,7 +1,7 @@
 defmodule Mix.Tasks.Day2 do
   use Mix.Task
 
-  def run(_) do
+  def run(args) do
     part = List.first(args) || 'nil'
 
     cond do
