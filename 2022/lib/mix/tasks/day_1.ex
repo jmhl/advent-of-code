@@ -1,16 +1,18 @@
 defmodule Mix.Tasks.Day1 do
   use Mix.Task
 
-  def run(_) do
-    calories = AdventOfCode2022.Day1.get_calories()
+  def run(args) do
+    part = List.first(args) || 'nil'
 
-    largest = calories |> Enum.max
-    IO.puts "largest: #{largest}"
-
-    largest_3_sum = calories
-                    |> Enum.sort(&(&1 >= &2))
-                    |> Enum.take(3)
-                    |> Enum.sum
-    IO.puts "sum of 3 largest: #{largest_3_sum}"
+    cond do
+      part == "part1" ->
+        IO.puts "Day 1, Part 1:"
+        IO.puts AdventOfCode2022.Day1.part1()
+      part == "part2" ->
+        IO.puts "Day 1, Part 2:"
+        IO.puts AdventOfCode2022.Day1.part2()
+      true ->
+        IO.puts "provide 'part1' or 'part1' as an arg, got #{part}"
+    end
   end
 end
