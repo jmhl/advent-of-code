@@ -12,7 +12,7 @@ defmodule Mix.Tasks.Day1 do
         IO.puts "Day 1, Part 2:"
         IO.puts AdventOfCode2022.Day1.part2()
       true ->
-        IO.puts "provide 'part1' or 'part1' as an arg, got #{part}"
+        IO.puts "provide 'part1' or 'part2' as an arg, got #{part}"
     end
   end
 end
