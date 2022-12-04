@@ -25,13 +25,13 @@ defmodule AdventOfCode2022.Day1 do
   end
 
   def part1 do
-    AdventOfCode2022.Day1.get_calories() |> Enum.max
+    AdventOfCode2022.Day1.get_calories() |> Enum.max()
   end
 
   def part2 do
     AdventOfCode2022.Day1.get_calories()
     |> Enum.sort(&(&1 >= &2))
     |> Enum.take(3)
-    |> Enum.sum
+    |> Enum.sum()
   end
 end

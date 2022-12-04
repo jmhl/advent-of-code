@@ -19,7 +19,7 @@ defmodule AdventOfCode2022.Day4 do
   end
 
   def get_overlap([elf1_assignment, elf2_assignment]) do
-    MapSet.intersection(MapSet.new(elf1_assignment), MapSet.new(elf2_assignment)) |> MapSet.to_list
+    MapSet.intersection(MapSet.new(elf1_assignment), MapSet.new(elf2_assignment)) |> MapSet.to_list()
   end
 
   def part1 do

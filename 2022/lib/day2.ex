@@ -1,14 +1,17 @@
 defmodule AdventOfCode2022.Day2 do
   @shapes %{
-    "A" => :rock,     "X" => :rock,
-    "B" => :paper,    "Y" => :paper,
-    "C" => :scissors, "Z" => :scissors,
+    "A" => :rock,
+    "X" => :rock,
+    "B" => :paper,
+    "Y" => :paper,
+    "C" => :scissors,
+    "Z" => :scissors
   }
-  @shape_score %{ :rock => 1, :paper => 2, :scissors => 3 }
-  @result_score %{ :win => 6, :draw => 3, :loss => 0 }
-  @strategy_outcomes %{ "X" => :loss, "Y" => :draw, "Z" => :win }
+  @shape_score %{:rock => 1, :paper => 2, :scissors => 3}
+  @result_score %{:win => 6, :draw => 3, :loss => 0}
+  @strategy_outcomes %{"X" => :loss, "Y" => :draw, "Z" => :win}
 
-  def get_result {opponent, ours} do
+  def get_result({opponent, ours}) do
     cond do
       opponent == ours -> :draw
       opponent == :paper and ours == :rock -> :loss
@@ -26,7 +29,7 @@ defmodule AdventOfCode2022.Day2 do
     |> Enum.to_list()
   end
 
-  def score_round {opponent, ours} do
+  def score_round({opponent, ours}) do
     score_for_shape = @shape_score[ours]
     result = get_result({opponent, ours})
     score_for_result = @result_score[result]
@@ -46,7 +49,7 @@ defmodule AdventOfCode2022.Day2 do
     get_rps()
     |> Enum.map(map_shapes)
     |> Enum.map(&score_round/1)
-    |> Enum.sum
+    |> Enum.sum()
   end
 
   def part2 do
@@ -56,17 +59,20 @@ defmodule AdventOfCode2022.Day2 do
       required_result = @strategy_outcomes[raw_required_result]
 
       choices = [:rock, :paper, :scissors]
-      choice_idx = Enum.find_index(choices, fn choice ->
-        get_result({opponent, choice}) == required_result
-      end)
+
+      choice_idx =
+        Enum.find_index(choices, fn choice ->
+          get_result({opponent, choice}) == required_result
+        end)
+
       ours = Enum.at(choices, choice_idx)
 
-      {opponent,ours}
+      {opponent, ours}
     end
 
     get_rps()
     |> Enum.map(map_shapes)
     |> Enum.map(&score_round/1)
-    |> Enum.sum
+    |> Enum.sum()
   end
 end
