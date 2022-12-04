@@ -5,6 +5,7 @@ defmodule AdventOfCode2022.Day4 do
     File.stream!(file_path)
     |> Stream.map(&String.trim/1)
     |> Enum.to_list()
+    |> Enum.map(&get_ranges/1)
   end
 
   def get_ranges(assignments) do
@@ -29,22 +30,13 @@ defmodule AdventOfCode2022.Day4 do
       intersection_length == length(elf1_assignment) or intersection_length == length(elf2_assignment)
     end
 
-    get_assignments()
-    |> Enum.map(&get_ranges/1)
-    |> Enum.filter(is_overlapping)
-    |> length
+    get_assignments() |> Enum.filter(is_overlapping) |> length
   end
 
   def part2 do
-    is_overlapping = fn [elf1_assignment, elf2_assignment] ->
-      intersection_length = get_overlap([elf1_assignment, elf2_assignment]) |> length
-
-      intersection_length > 0
-    end
-
     get_assignments()
-    |> Enum.map(&get_ranges/1)
-    |> Enum.filter(is_overlapping)
+    |> Enum.map(&get_overlap/1)
+    |> Enum.filter(fn x -> length(x) > 0 end)
     |> length
   end
 end
