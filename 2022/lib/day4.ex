@@ -12,10 +12,7 @@ defmodule AdventOfCode2022.Day4 do
     String.split(assignments, ",", trim: true)
     |> Enum.map(fn x -> String.split(x, "-", trim: true) end)
     |> Enum.map(fn [start_section_str, end_section_str] ->
-      start_section = String.to_integer(start_section_str)
-      end_section = String.to_integer(end_section_str)
-
-      Enum.to_list(start_section..end_section)
+      Enum.to_list(String.to_integer(start_section_str)..String.to_integer(end_section_str))
     end)
   end
 
