@@ -19,7 +19,7 @@ defmodule AdventOfCode2022.Day2 do
   end
 
   def get_rps do
-    file_path = Application.app_dir(:advent_of_code_2022, "priv/day_2_input.txt")
+    file_path = Application.app_dir(:advent_of_code_2022, "priv/day2_input.txt")
 
     File.stream!(file_path)
     |> Stream.map(&String.trim/1)

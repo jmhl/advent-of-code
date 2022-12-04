@@ -2,7 +2,7 @@ defmodule AdventOfCode2022.Day3 do
   @alphabet "abcdefghijklmnopqrstuvwxyz" |> String.split("", trim: true)
 
   def get_rucksacks do
-    file_path = Application.app_dir(:advent_of_code_2022, "priv/day_3_input.txt")
+    file_path = Application.app_dir(:advent_of_code_2022, "priv/day3_input.txt")
 
     File.stream!(file_path)
     |> Stream.map(&String.trim/1)

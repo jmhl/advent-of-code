@@ -16,7 +16,7 @@ defmodule AdventOfCode2022.Day1 do
       acc -> {:cont, acc, []}
     end
 
-    file_path = Application.app_dir(:advent_of_code_2022, "priv/day_1_input.txt")
+    file_path = Application.app_dir(:advent_of_code_2022, "priv/day1_input.txt")
 
     File.stream!(file_path)
     |> Stream.chunk_while([], chunk, after_chunk)
