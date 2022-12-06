@@ -7,6 +7,6 @@ defmodule Mix.Tasks.Solution do
 
     result = apply(module_name, method_name, [])
 
-    IO.puts("Result for day #{day_num}, part #{part_num}:\n\n#{result}")
+    # IO.puts("Result for day #{day_num}, part #{part_num}:\n\n#{result}")
   end
 end
