@@ -15,12 +15,20 @@ for id_range in string.gmatch(content, "([^,]+)") do
 	for num = start, stop do
 		local num_s = tostring(num)
 
-		local first_half = string.sub(num_s, 0, #num_s // 2)
-		local second_half = string.sub(num_s, #num_s // 2 + 1, -1)
+		local len = #num_s
+		local limit = len // 2
 
-		if first_half == second_half then
-			print(num)
-			total = total + num
+		for sub_num = 1, limit do
+			if len % sub_num == 0 then
+				local substr = string.sub(num_s, 0, sub_num)
+
+				local repeated_substr = string.rep(substr, len / sub_num)
+
+				if repeated_substr == num_s then
+					total = total + num
+					break
+				end
+			end
 		end
 	end
 end
