@@ -1,4 +1,6 @@
-file = io.open("./src/day2/input.txt", "r")
+utils = require("src.utils")
+
+file = io.open("./src/day2/test_input.txt", "r")
 
 local content = file:read"*a"
 
@@ -6,7 +8,7 @@ file:close()
 
 local total = 0
 
-for id_range in string.gmatch(content, "([^,]+)") do
+for id_range in utils.split_on_delimiter(content) do
 	local start_s, stop_s = string.match(id_range, "(%d+)-(%d+)")
 
 	local start = tonumber(start_s)
