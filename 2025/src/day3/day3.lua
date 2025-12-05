@@ -1,4 +1,4 @@
-file = io.open("./src/day3/input.txt", "r")
+file = io.open("./src/day3/test_input.txt", "r")
 
 local total = 0
 
