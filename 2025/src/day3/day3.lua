@@ -1,4 +1,4 @@
-file = io.open("./src/day3/test_input.txt", "r")
+file = io.open("./src/day3/input.txt", "r")
 
 local total = 0
 
@@ -12,7 +12,7 @@ for line in file:lines() do
 			local next_num_s = line:sub(j, j)
 			local num = tonumber("" .. curr_num_s .. next_num_s .. "")
 
-			if (num > 9 and num > largest) then
+			if (num > largest) then
 				largest = num
 			end
 		end
